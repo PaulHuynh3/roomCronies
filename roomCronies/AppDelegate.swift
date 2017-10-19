@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         configureParse()
-        createUser()
+//        createRoom()
+//        createJaison()
+//        createPaul()
+        fetchPerson()
         
         return true
     }
@@ -34,15 +37,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
-    private func createUser() {
+    private func createRoom() {
         
-        let paul = PFObject(className: "Person")
+        let room = PFObject(className: "room")
+        
+        room["type"] = "apartment"
+        
+        room.saveInBackground{ (success, error) in
+            if let error = error {
+                print (#line, error)
+                return
+            }
+            print(#line, success)
+            
+        }
+    }
+    
+    private func createPaul() {
+    
+        let paul = PFObject(className: "person")
         paul["age"] = 26
         paul["email"] = "paul.huynh3@gmail.com"
         paul["password"] = "password"
         
-        paul.saveInBackground{ (success, error) in
+        paul["parent"] = PFObject.init(withoutDataWithClassName:"room", objectId: "Tk7RVCJkHh")
+    
+        paul.saveInBackground { (success, error) in
+            
+            if let error = error {
+                print(#line, error)
+                return
+            }
+            print(#line, success)
+        }
+    }
+    
+    
+    
+    private func createJaison() {
+        
+        let jaison = PFObject(className: "person")
+        jaison["age"] = 21
+        jaison["email"] = "jb@gmail.com"
+        jaison["password"] = "password"
+        
+        
+        //establish the relationship.
+        jaison["parent"] = PFObject.init(withoutDataWithClassName:"room", objectId:"Tk7RVCJkHh")
+        
+        
+        
+        jaison.saveInBackground{ (success, error) in
             if let error = error {
                 print (#line, error)
                 return
@@ -53,36 +98,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    //this fetches the person based on predicate
+    private func fetchPerson() {
+        let predicate = NSPredicate(format: "age > 18")
+        let query = PFQuery(className: "person", predicate: predicate)
+        query.findObjectsInBackground {(person: [PFObject]?, error: Error?) in
+            
+            if let error = error {
+                print(#line, error.localizedDescription)
+                return
+            }
+            guard let person = person else {
+                
+                return
+            }
+            
+            
+            for jaison in person {
+                
+                print(jaison)
+            }
+            
+        }
+
+    }
     
-    //
-    //    //this fetches the person based on predicate
-    //    private func fetchPerson() {
-    //        let predicate = NSPredicate(format: "age > 22")
-    //        let query = PFQuery(className: "CatSnail", predicate: predicate)
-    //        query.findObjectsInBackground {(cats: [PFObject]?, error: Error?) in
-    //
-    //            if let error = error {
-    //                print(#line, error.localizedDescription)
-    //                return
-    //            }
-    //            guard let cats = cats else {
-    //
-    //                return
-    //            }
-    //
-    //            var catArray:[Any] = []
-    //
-    //            for cat in cats {
-    //
-    //                catArray.append(cat)
-    //            }
-    //            print(catArray)
-    //
-    //        }
-    //
-    //
-    //    }
-    //
+ 
     //    private func createCat() {
     //        do{
     //            let person = PFObject(className: "CatSnail")
