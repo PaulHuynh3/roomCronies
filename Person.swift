@@ -11,17 +11,14 @@ import Parse
 
 class Person: PFObject {
     
-    @NSManaged var name:String
-    @NSManaged var email:String
-    @NSManaged var password:String
-    @NSManaged var taskDoer: Bool
-    @NSManaged var taskCreator: Bool
+    @NSManaged var userName:String
+    @NSManaged var userEmail:String
+    @NSManaged var userPassword:String
+    @NSManaged var roomName: Room
     
     
-    convenience init?(name:String, email:String, password:String){
-        
+     convenience init?(name:String, email:String, password:String, roomName:Room){
         self.init()
-        
         
         //error handling
         guard !name.isEmpty else {
@@ -38,10 +35,10 @@ class Person: PFObject {
         
         
         //Initialize stored properties
-        self.name = name
-        self.email = email
-        self.password = password
-        
+        self.userName = name
+        self.userEmail = email
+        self.userPassword = password
+        self.roomName = roomName
         
         
     }

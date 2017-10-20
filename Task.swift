@@ -17,22 +17,22 @@ class Task: PFObject {
     @NSManaged var priority: Int
     @NSManaged var dateCreated: Date
     @NSManaged var dateCompleted: Date
+    @NSManaged var taskDoer: Person
+    @NSManaged var taskCreator: Person
     
     
     
-    convenience init(taskName:String, description:String, isExpense:Bool, priority:Int, dateCreated:Date) {
-       self.init()
+    convenience init(taskCreator:Person, taskName:String, description:String, isExpense:Bool, priority:Int, isComplete:Bool, dateCreated:Date) {
+        self.init()
         
+        self.taskCreator = taskCreator
         self.taskName = taskName
         self.taskDescription = description
         self.isExpense = isExpense
         self.priority = priority
+        self.isComplete = isComplete
         self.dateCreated = dateCreated
     }
-    
-    
-    
-    
     
     
 }

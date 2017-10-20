@@ -12,21 +12,19 @@ import Parse
 
 class Room: PFObject{
    
-    @NSManaged var personInRoom:Int
+    @NSManaged var personInRoom: Person
+    @NSManaged var numberOfPerson: [Person]
     
-    
-    convenience init(personInRoom:Int) {
+    convenience init(personInRoom:Person, numberOfPerson:[Person]) {
+       self.init()
         
-        self.init()
         
         //initlize stored properties.
-        self.personInRoom = peopleInRoom
+        self.personInRoom = personInRoom
+        self.numberOfPerson = numberOfPerson
         
     }
-    
-    
-    
-    
+
 
 }
 
