@@ -17,9 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         configureParse()
-//        createRoom()
-//        createJaison()
-//        createPaul()
+        //        createRoom()
+        //        createJaison()
+        //        createPaul()
         fetchPerson()
         
         return true
@@ -54,14 +54,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func createPaul() {
-    
+        
         let paul = PFObject(className: "person")
         paul["age"] = 26
         paul["email"] = "paul.huynh3@gmail.com"
         paul["password"] = "password"
         
         paul["parent"] = PFObject.init(withoutDataWithClassName:"room", objectId: "Tk7RVCJkHh")
-    
+        
         paul.saveInBackground { (success, error) in
             
             if let error = error {
@@ -120,76 +120,81 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-
+        
     }
     
- 
-    //    private func createCat() {
-    //        do{
-    //            let person = PFObject(className: "CatSnail")
-    //            person["age"] = 21
-    //            person["name"] = "Paul"
-    //            let path = Bundle.main.path(forResource: "mushroom", ofType: "jpg")
-    //            let file = try PFFile(name:"mushroom.jpg", contentsAtPath: path!)
-    //            person["image"] = file
-    //            person.saveInBackground{ (success, error) in
-    //                if let error = error {
-    //                    print (#line, error)
-    //                    return
-    //                }
-    //                print(#line, success)
-    //
-    //            }
-    //        }
-    //        catch{
-    //
-    //            print(#line, error.localizedDescription)
-    //        }
-    //
-    //    }
-    //
-    //
-    //    //this allows deleteObject to call it and delete the person
-    //    private func fetchPersonCompletion(completion: @escaping (PFObject) -> () ) {
-    //        let predicate = NSPredicate(format: "age > 22")
-    //        let query = PFQuery(className: "CatSnail", predicate: predicate)
-    //        query.findObjectsInBackground {(cats: [PFObject]?, error: Error?) in
-    //
-    //            if let error = error {
-    //                print(#line, error.localizedDescription)
-    //                return
-    //            }
-    //            guard let cats = cats else {
-    //
-    //                return
-    //            }
-    //
-    //            let ian = cats.first!
-    //
-    //            completion(ian)
-    //
-    //        }
-    //
-    //
-    //    }
-    //
-    //
-    //    private func deleteObject() {
-    //        fetchPersonCompletion{ (person) in
-    //            person.deleteInBackground(block: { (success, _) in
-    //                print(#line, "Ian dies!")
-    //            })
-    //        }
-    //    }
-    //    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //this allows deleteObject to call it and delete the person
+    private func fetchPersonCompletion(completion: @escaping (PFObject) -> () ) {
+        let predicate = NSPredicate(format: "age > 22")
+        let query = PFQuery(className: "CatSnail", predicate: predicate)
+        query.findObjectsInBackground {(cats: [PFObject]?, error: Error?) in
+            
+            if let error = error {
+                print(#line, error.localizedDescription)
+                return
+            }
+            guard let cats = cats else {
+                
+                return
+            }
+            
+            let ian = cats.first!
+            
+            completion(ian)
+            
+        }
+        
+    }
 }
+
+
+
+
+//    private func createCat() {
+//        do{
+//            let person = PFObject(className: "CatSnail")
+//            person["age"] = 21
+//            person["name"] = "Paul"
+//            let path = Bundle.main.path(forResource: "mushroom", ofType: "jpg")
+//            let file = try PFFile(name:"mushroom.jpg", contentsAtPath: path!)
+//            person["image"] = file
+//            person.saveInBackground{ (success, error) in
+//                if let error = error {
+//                    print (#line, error)
+//                    return
+//                }
+//                print(#line, success)
+//
+//            }
+//        }
+//        catch{
+//
+//            print(#line, error.localizedDescription)
+//        }
+//
+//    }
+//
+//
+
+//
+//
+//    }
+//
+//
+//    private func deleteObject() {
+//        fetchPersonCompletion{ (person) in
+//            person.deleteInBackground(block: { (success, _) in
+//                print(#line, "Ian dies!")
+//            })
+//        }
+//    }
+//
+
+
+
+
+
+
+
+
 
