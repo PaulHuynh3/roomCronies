@@ -1,19 +1,20 @@
 //
-//  User.swift
+//  Person.swift
 //  roomCronies
 //
-//  Created by Paul on 2017-10-19.
+//  Created by Paul on 2017-10-20.
 //  Copyright © 2017 Paul. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class User: PFObject {
+class Person: PFObject {
     
     @NSManaged var name:String
     @NSManaged var email:String
     @NSManaged var password:String
+    
     
     
     
@@ -50,13 +51,11 @@ class User: PFObject {
 
 
 //This allows the other controller to use dot notation properties.
-extension User: PFSubclassing {
+extension Person: PFSubclassing {
     
     static func parseClassName() -> String {
-        return "User"
+        return "person"
     }
     
 }
-
-
 
