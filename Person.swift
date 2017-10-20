@@ -14,8 +14,8 @@ class Person: PFObject {
     @NSManaged var name:String
     @NSManaged var email:String
     @NSManaged var password:String
-    
-    
+    @NSManaged var taskDoer: Bool
+    @NSManaged var taskCreator: Bool
     
     
     convenience init?(name:String, email:String, password:String){
