@@ -470,6 +470,7 @@
 		881B1F791F9A777900CD06E2 /* Pods-roomCronies.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Pods-roomCronies.debug.xcconfig"; sourceTree = "<group>"; };
 		881B1F7A1F9A777900CD06E2 /* Pods-roomCronies.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = "Pods-roomCronies.modulemap"; sourceTree = "<group>"; };
 		881B1F7B1F9A777900CD06E2 /* Pods-roomCronies.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Pods-roomCronies.release.xcconfig"; sourceTree = "<group>"; };
+		881B1F8A1F9A7B6800CD06E2 /* roomCronies.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = roomCronies.entitlements; sourceTree = "<group>"; };
 		DA0F0FDD1F9926250057F23E /* roomCronies-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "roomCronies-Bridging-Header.h"; sourceTree = "<group>"; };
 		DA7AB7A91F99219D00E816C9 /* roomCronies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = roomCronies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7AB7AC1F99219D00E816C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1771,6 +1772,7 @@
 		DA7AB7AB1F99219D00E816C9 /* roomCronies */ = {
 			isa = PBXGroup;
 			children = (
+				881B1F8A1F9A7B6800CD06E2 /* roomCronies.entitlements */,
 				DA7AB7AC1F99219D00E816C9 /* AppDelegate.swift */,
 				DA7AB7B31F99219D00E816C9 /* Assets.xcassets */,
 				DA7AB7B51F99219D00E816C9 /* LaunchScreen.storyboard */,
@@ -1816,9 +1818,14 @@
 				TargetAttributes = {
 					DA7AB7A81F99219D00E816C9 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 9T98QB7DLD;
+						DevelopmentTeam = VEQ58EUFKD;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2007,6 +2014,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2058,7 +2066,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2086,10 +2095,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 9T98QB7DLD;
+				CODE_SIGN_ENTITLEMENTS = roomCronies/roomCronies.entitlements;
+				DEVELOPMENT_TEAM = VEQ58EUFKD;
 				INFOPLIST_FILE = roomCronies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Paul.roomCronies;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brewiskey.roomCronies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "roomCronies/roomCronies-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2103,10 +2114,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 9T98QB7DLD;
+				CODE_SIGN_ENTITLEMENTS = roomCronies/roomCronies.entitlements;
+				DEVELOPMENT_TEAM = VEQ58EUFKD;
 				INFOPLIST_FILE = roomCronies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Paul.roomCronies;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brewiskey.roomCronies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "roomCronies/roomCronies-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
