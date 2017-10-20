@@ -162,7 +162,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             print("Notification settings: \(settings)")
-            
             guard settings.authorizationStatus == .authorized else { return }
             OperationQueue.main.addOperation {
                 UIApplication.shared.registerForRemoteNotifications()
@@ -178,11 +177,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         print("Device Token: \(token)")
+        
+        let installation = PFInstallation.current()
+        installation?.setDeviceTokenFrom(deviceToken)
+        installation?.saveInBackground()
     }
     
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register: \(error)")
+    }
+    
+    private func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handle(userInfo)
     }
     
 }
