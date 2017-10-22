@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddTaskDelegate {
     
@@ -17,6 +18,7 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTask()
         
     }
     
@@ -77,13 +79,13 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
             guard let detailedTaskVc = segue.destination as? AddTaskViewController else {
                 fatalError("unexpected destination:\(segue.destination)")
             }
-                guard let taskViewCell = segue.destination as? TaskViewCell else {
-                    fatalError("unexpected sender:\((String)(describing: sender))")
-                }
-                guard let indexPath = tableView.indexPath(for: taskViewCell) else {
-                    fatalError("The selected cell is not being displayed by the table")
+            guard let taskViewCell = sender as? TaskViewCell else {
+                fatalError("unexpected sender:\((String)(describing: sender))")
+            }
+            guard let indexPath = tableView.indexPath(for: taskViewCell) else {
+                fatalError("The selected cell is not being displayed by the table")
                     
-                }
+            }
                 
                 let selectedTask = tasks[indexPath.row]
                 detailedTaskVc.task = selectedTask
@@ -104,10 +106,29 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
+    //MARK: fetch tasks from parse
+    
+    func fetchTask() {
+    let query = PFQuery(className: "task")
+        
+        //findObjectsInBackground already made a network request so we dont need to call it with a completion handler.
+        
+        query.findObjectsInBackground { (task:[PFObject]?, error: Error?) in
+            
+            //error handling
+            if let error = error {
+                print(#line, error.localizedDescription)
+                return
+            }
+            
+            self.tasks.append(contentsOf: task as! [Task])
+            self.tableView.reloadData()
+
+        }
     
     
-    
-    
+    }
+
     
 }
 

@@ -35,49 +35,53 @@ class AddTaskViewController: UIViewController {
             taskNameTextField.text = task.taskName
             taskDescriptionTextField.text = task.taskDescription
             
-            if var priorty = Int(taskPriorityTextField.text!){
-                priorty = task.priority
+            if var priority = Int(taskPriorityTextField.text!){
+                priority = task.priority
+                
             }
         }
-            
-            
+        
+        
     }
+    
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let task = Task ()
         
         
-        @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-            
-            let task = Task ()
-            
-            
-            if let name = taskNameTextField.text {
-                task.taskName = name
-                
-            }
-            
-            if let description = taskDescriptionTextField.text {
-                task.taskDescription = description
-            }
-            
-            
-            if let priorityNumber = Int(taskPriorityTextField.text!) {
-                
-                task.priority = priorityNumber
-            }
-            
-            
-            taskDelegate?.addTaskObject(task: task)
-            
-            navigationController?.popViewController(animated: true)
+        if let name = taskNameTextField.text {
+            task.taskName = name
             
         }
         
-        
-        @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-            
-            navigationController?.popViewController(animated: true)
-            
+        if let description = taskDescriptionTextField.text {
+            task.taskDescription = description
         }
         
         
+        if let priorityNumber = Int(taskPriorityTextField.text!) {
+            
+            task.priority = priorityNumber
+        }
         
+        task.saveInBackground()
+        
+       
+        taskDelegate?.addTaskObject(task: task)
+        
+        
+        dismiss(animated: true, completion: nil)
+
+    }
+    
+    
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    
 }
