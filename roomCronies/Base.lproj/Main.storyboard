@@ -44,6 +44,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="taskLabel" destination="gco-lG-7mJ" id="kTj-TF-t5E"/>
+                                            <segue destination="kec-Il-1J7" kind="show" identifier="ShowDetailTask" id="1od-P2-kcF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -64,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991" y="125"/>
+            <point key="canvasLocation" x="993" y="98"/>
         </scene>
         <!--Add Task VC-->
         <scene sceneID="nQW-GT-W8n">
@@ -121,12 +122,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="taskDescriptionTextField" destination="5Xa-99-Avw" id="q5e-3x-aM9"/>
                         <outlet property="taskNameTextField" destination="XIq-FN-PvO" id="iKe-X7-r1N"/>
+                        <outlet property="taskPriorityTextField" destination="AY6-hR-PR4" id="Gfw-zs-gfH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Csk-xB-Dar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="-202"/>
+            <point key="canvasLocation" x="2089" y="98"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CgY-Np-Fp2">
@@ -147,4 +150,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="97.601199400299862"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="1od-P2-kcF"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -74,28 +74,23 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         case "ShowDetailTask":
             
-            guard let addTaskVc = segue.destination as? AddTaskViewController else {
+            guard let detailedTaskVc = segue.destination as? AddTaskViewController else {
                 fatalError("unexpected destination:\(segue.destination)")
-                
-            guard let taskViewCell = segue.destination as? TaskViewCell else {
-                fatalError("unexpected sender:\((String)(describing: sender))")
-                }
-            guard let indexPath = tableView.indexPath(for: taskViewCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-                
-                }
-                
-            let selectedTask = tasks[indexPath.row]
-            
-                
             }
-            
+                guard let taskViewCell = segue.destination as? TaskViewCell else {
+                    fatalError("unexpected sender:\((String)(describing: sender))")
+                }
+                guard let indexPath = tableView.indexPath(for: taskViewCell) else {
+                    fatalError("The selected cell is not being displayed by the table")
+                    
+                }
+                
+                let selectedTask = tasks[indexPath.row]
+                detailedTaskVc.task = selectedTask
             
         default:
-            <#code#>
+            fatalError("unexpected segue identifier \(String(describing: segue.identifier))")
         }
-        
-        
     }
     
     
@@ -104,6 +99,7 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func addTaskObject(task: Task) {
         
         tasks.append(task)
+        self.tableView.reloadData()
         
     }
     
