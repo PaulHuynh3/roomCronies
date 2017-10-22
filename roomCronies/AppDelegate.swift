@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        createPaul()
 //        paulCreateTask()
 //        paulCreateExpense()
-        fetchPerson()
+//        fetchPerson()
         
         return true
     }
@@ -196,75 +196,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //            })
     //        }
     //    }
-    
-    
-    
-
-
-
-
-
-    //this allows deleteObject to call it and delete the person
-//    private func fetchPersonCompletion(completion: @escaping (PFObject) -> () ) {
-//        let predicate = NSPredicate(format: "age > 22")
-//        let query = PFQuery(className: "CatSnail", predicate: predicate)
-//        query.findObjectsInBackground {(cats: [PFObject]?, error: Error?) in
-//            
-//            if let error = error {
-//                print(#line, error.localizedDescription)
-//                return
-//            }
-//            guard let cats = cats else {
-//                
-//                return
-//            }
-//            
-//            let ian = cats.first!
-//            
-//            completion(ian)
-//            
-//        }
-//        
-//    }
-//}
-
-
-
-
-//    private func createCat() {
-//        do{
-//            let person = PFObject(className: "CatSnail")
-//            person["age"] = 21
-//            person["name"] = "Paul"
-//            let path = Bundle.main.path(forResource: "mushroom", ofType: "jpg")
-//            let file = try PFFile(name:"mushroom.jpg", contentsAtPath: path!)
-//            person["image"] = file
-//            person.saveInBackground{ (success, error) in
-//                if let error = error {
-//                    print (#line, error)
-//                    return
-//                }
-//                print(#line, success)
-//
-//            }
-//        }
-//        catch{
-//
-//            print(#line, error.localizedDescription)
-//        }
-//
-//    }
-//
-//
-
-//
-//
-//    }
-//
-//
-
-//
-
 
 
 
