@@ -44,7 +44,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="taskLabel" destination="gco-lG-7mJ" id="kTj-TF-t5E"/>
-                                            <segue destination="FaA-36-F5a" kind="show" id="Kyu-pI-Cpt"/>
+                                            <segue destination="FaA-36-F5a" kind="show" identifier="ShowDetailTask" id="Kyu-pI-Cpt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -119,9 +119,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="taskDescriptionTextField" destination="5Xa-99-Avw" id="knY-sq-rax"/>
                         <outlet property="taskNameTextField" destination="XIq-FN-PvO" id="iKe-X7-r1N"/>
-                        <outlet property="taskPriorityTextField" destination="AY6-hR-PR4" id="pNf-2V-pfF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Csk-xB-Dar" userLabel="First Responder" sceneMemberID="firstResponder"/>

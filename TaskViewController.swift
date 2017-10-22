@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddTaskDelegate {
 
     var tasks:[Task] = []
     
@@ -51,6 +51,43 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
+    
+    //MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch (segue.identifier ?? "") {
+        case "AddTaskSegue":
+            
+            guard let addTaskVC = segue.destination as? AddTaskViewController else{
+            fatalError("unexpected destination:\(segue.destination)")
+            }
+            
+            //set to be the task delegate
+            addTaskVC.taskDelegate = self
+            
+            print("Adding a new task")
+        
+        case "ShowDetailTask"
+            
+            
+        default:
+            <#code#>
+        }
+        
+        
+    }
+    
+    
+    
+    //MARK: taskDelegate
+    func addTaskObject(task: Task) {
+        
+        tasks.append(task)
+        
+    }
     
 
     
