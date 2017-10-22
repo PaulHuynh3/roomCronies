@@ -9,15 +9,17 @@
 import UIKit
 
 class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddTaskDelegate {
-
-    var tasks:[Task] = []
     
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var tasks:[Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    
     
     //MARK: Tableview Datasource
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -26,20 +28,20 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-    return tasks.count
+        return tasks.count
         
-    
+        
     }
     
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-    
-    let cellIdentifier = "TaskViewCell"
+        
+        let cellIdentifier = "TaskViewCell"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskViewCell else {
-        
-        fatalError("The dequeued cell is not TaskViewCell")
-        
+            
+            fatalError("The dequeued cell is not TaskViewCell")
+            
         }
         
         let task = tasks[indexPath.row]
@@ -48,7 +50,7 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
         return cell
-
+        
     }
     
     
@@ -62,15 +64,31 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case "AddTaskSegue":
             
             guard let addTaskVC = segue.destination as? AddTaskViewController else{
-            fatalError("unexpected destination:\(segue.destination)")
+                fatalError("unexpected destination:\(segue.destination)")
             }
             
             //set to be the task delegate
             addTaskVC.taskDelegate = self
             
             print("Adding a new task")
-        
-        case "ShowDetailTask"
+            
+        case "ShowDetailTask":
+            
+            guard let addTaskVc = segue.destination as? AddTaskViewController else {
+                fatalError("unexpected destination:\(segue.destination)")
+                
+            guard let taskViewCell = segue.destination as? TaskViewCell else {
+                fatalError("unexpected sender:\((String)(describing: sender))")
+                }
+            guard let indexPath = tableView.indexPath(for: taskViewCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+                
+                }
+                
+            let selectedTask = tasks[indexPath.row]
+            
+                
+            }
             
             
         default:
@@ -89,12 +107,12 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-
     
     
     
     
-
+    
+    
 }
 
 

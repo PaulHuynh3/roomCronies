@@ -44,7 +44,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="taskLabel" destination="gco-lG-7mJ" id="kTj-TF-t5E"/>
-                                            <segue destination="FaA-36-F5a" kind="show" identifier="ShowDetailTask" id="Kyu-pI-Cpt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -59,6 +58,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="6d0-p1-UIp" id="vel-LF-XWJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,24 +127,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Csk-xB-Dar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1985" y="-202"/>
-        </scene>
-        <!--Detailed Task View-->
-        <scene sceneID="FaZ-yi-G9R">
-            <objects>
-                <viewController title="Detailed Task View" id="FaA-36-F5a" customClass="DetailedTaskViewController" customModule="roomCronies" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kdU-UX-y76"/>
-                        <viewControllerLayoutGuide type="bottom" id="nhS-X5-Zm6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="JdP-1g-W3h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cWt-b9-tB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2172" y="493"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CgY-Np-Fp2">
