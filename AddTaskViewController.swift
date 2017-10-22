@@ -8,28 +8,64 @@
 
 import UIKit
 
-class AddTaskViewController: UIViewController {
+protocol AddTaskDelegate {
+    
+    func addTaskObject(task:Task)
+}
 
+class AddTaskViewController: UIViewController {
+    
+    var taskDelegate: AddTaskDelegate?
+    
+    @IBOutlet weak var taskNameTextField: UITextField!
+    @IBOutlet weak var taskDescriptionTextField: UITextField!
+    @IBOutlet weak var taskPriorityTextField: UITextField!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let task = Task ()
+        
+        
+        if let name = taskNameTextField.text {
+        task.taskName = name
+            
+        }
+        
+        if let description = taskDescriptionTextField.text {
+        task.taskDescription = description
+        }
+        
+        
+        if let priorityNumber = Int(taskPriorityTextField.text!) {
+            
+        task.priority = priorityNumber
+        }
+        
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        taskDelegate?.addTaskObject(task: task)
+        
+        navigationController?.popViewController(animated: true)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        
+        navigationController?.popViewController(animated: true)
+        
     }
-    */
-
+    
+    
+    
 }
