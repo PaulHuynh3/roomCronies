@@ -70,7 +70,7 @@ class AddTaskViewController: UIViewController {
        
         taskDelegate?.addTaskObject(task: task)
         
-        
+        //presented modally.
         dismiss(animated: true, completion: nil)
 
     }
@@ -78,6 +78,7 @@ class AddTaskViewController: UIViewController {
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
         
+        //presented modally.
         dismiss(animated: true, completion: nil)
         
     }
