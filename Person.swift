@@ -14,12 +14,16 @@ class Person: PFObject {
     @NSManaged var userName:String
     @NSManaged var userEmail:String
     @NSManaged var userPassword:String
-    @NSManaged var roomName: Room
+    @NSManaged var roomName: String
     @NSManaged var taskCreator: [Task]
     @NSManaged var taskDoer: [Task]
     
     
-     convenience init?(name:String, email:String, password:String, roomName:Room){
+    
+    
+    
+    
+     convenience init?(name:String, email:String, password:String, roomName:String){
         self.init()
         
         //error handling

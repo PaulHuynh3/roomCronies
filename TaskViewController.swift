@@ -18,9 +18,11 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createObject()
         fetchTask()
         
     }
+    
     
     
     //MARK: Tableview Datasource
@@ -84,11 +86,11 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
             guard let indexPath = tableView.indexPath(for: taskViewCell) else {
                 fatalError("The selected cell is not being displayed by the table")
-                    
-            }
                 
-                let selectedTask = tasks[indexPath.row]
-                detailedTaskVc.task = selectedTask
+            }
+            
+            let selectedTask = tasks[indexPath.row]
+            detailedTaskVc.task = selectedTask
             
         default:
             fatalError("unexpected segue identifier \(String(describing: segue.identifier))")
@@ -97,7 +99,7 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     
-    //MARK: taskDelegate
+    //MARK: Task Delegate
     func addTaskObject(task: Task) {
         
         tasks.append(task)
@@ -106,10 +108,10 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    //MARK: fetch tasks from parse
+    //MARK: Fetch Parse
     
     func fetchTask() {
-    let query = PFQuery(className: "task")
+        let query = PFQuery(className: "task")
         
         //findObjectsInBackground already made a network request so we dont need to call it with a completion handler.
         
@@ -123,12 +125,41 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             self.tasks.append(contentsOf: task as! [Task])
             self.tableView.reloadData()
-
+            
         }
-    
-    
+        
+        
     }
-
+    
+    
+    //MARK: Create Person object & Room object
+    
+    func createObject() {
+        
+        let apartment = Room()
+        
+        apartment.roomName = "imagination"
+        
+        
+        apartment.saveInBackground()
+        
+        
+        let paul = Person(name: "Paul", email: "paul@gmail.com", password: "password", roomName: apartment.objectId!)
+        let jaison = Person(name: "Jaison", email: "jai@gmail.com", password:"password", roomName: apartment.objectId!)
+        
+        apartment.members = [paul!,jaison!]
+        
+        apartment.saveInBackground()
+        paul?.saveInBackground()
+        jaison?.saveInBackground()
+        
+        self.tableView.reloadData()
+    }
+    
+  
+    
+    
+    
     
 }
 

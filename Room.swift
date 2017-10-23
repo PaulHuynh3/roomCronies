@@ -19,6 +19,19 @@ class Room: PFObject{
     //many task in one room: Task object: room: Room <--->> tasks: [Task]
     @NSManaged var tasks : [Task]
     
+    
+    //when the room is iniatilize in vc it will create the persons.
+    override init() {
+        super.init()
+        _ = Person(name: "Paul", email: "paul@gmail.com", password: "password", roomName:self.roomName)
+        _ = Person(name: "Jaison", email: "jai@gmail.com", password:"password", roomName:self.roomName)
+        
+        
+    }
+    
+    
+    
+    
     convenience init(roomName:String,members:[Person]) {
         self.init()
         
