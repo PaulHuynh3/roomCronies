@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				DAFEEE591F9D857800BAB132 /* RoomCroniesModel.swift */,
-				DAF3FA031F9A5BA60095B7A4 /* Room.swift */,
 				DAF3FA011F9A27270095B7A4 /* Person.swift */,
+				DAF3FA031F9A5BA60095B7A4 /* Room.swift */,
 				DAF3FA051F9A5DA60095B7A4 /* Task.swift */,
 				DAF3FA071F9A62690095B7A4 /* Expense.swift */,
 			);

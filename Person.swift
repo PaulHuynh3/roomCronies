@@ -14,16 +14,24 @@ class Person: PFObject {
     @NSManaged var userName:String
     @NSManaged var userEmail:String
     @NSManaged var userPassword:String
-    @NSManaged var roomName: String
+    @NSManaged var roomName: Room
     @NSManaged var taskCreator: [Task]
     @NSManaged var taskDoer: [Task]
     
     
+    //iniatilize room when person is creted.
+    override init () {
+    super.init ()
+        
+        
+        
+    
+    }
     
     
     
     
-     convenience init?(name:String, email:String, password:String, roomName:String){
+     convenience init?(name:String, email:String, password:String, roomName:Room){
         self.init()
         
         //error handling

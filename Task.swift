@@ -23,7 +23,7 @@ class Task: PFObject {
     //many task in one room: room: Room <--->> tasks: [Task]  (Room object)
     @NSManaged var room: Room
 
-    //use the build in property objectId to access specific object 
+    //use the built in property objectId to access specific object
     
     
     convenience init(taskCreator:Person, room: Room, taskName:String, description:String, isExpense:Bool, priority:Int, dueDate: Date) {

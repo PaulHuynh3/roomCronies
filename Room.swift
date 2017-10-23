@@ -21,13 +21,13 @@ class Room: PFObject{
     
     
     //when the room is iniatilize in vc it will create the persons.
-    override init() {
-        super.init()
-        _ = Person(name: "Paul", email: "paul@gmail.com", password: "password", roomName:self.roomName)
-        _ = Person(name: "Jaison", email: "jai@gmail.com", password:"password", roomName:self.roomName)
-        
-        
-    }
+//    override init() {
+//        super.init()
+//        let paul = Person(name: "Paul", email: "paul@gmail.com", password: "password", roomName:self.roomName)
+//        let jaison = Person(name: "Jaison", email: "jai@gmail.com", password:"password", roomName:self.roomName)
+//        
+//        
+//    }
     
     
     

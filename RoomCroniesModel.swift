@@ -9,5 +9,14 @@
 import UIKit
 import Parse
 
+class RoomCroniesModel: PFObject {
+    
+    override init() {
+        super.init()
 
+        
+    }
+    
+    
+}
 

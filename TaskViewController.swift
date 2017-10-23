@@ -18,8 +18,8 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createObject()
         fetchTask()
+       let room = Room()
         
     }
     
@@ -134,27 +134,27 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: Create Person object & Room object
     
-    func createObject() {
-        
-        let apartment = Room()
-        
-        apartment.roomName = "imagination"
-        
-        
-        apartment.saveInBackground()
-        
-        
-        let paul = Person(name: "Paul", email: "paul@gmail.com", password: "password", roomName: apartment.objectId!)
-        let jaison = Person(name: "Jaison", email: "jai@gmail.com", password:"password", roomName: apartment.objectId!)
-        
-        apartment.members = [paul!,jaison!]
-        
-        apartment.saveInBackground()
-        paul?.saveInBackground()
-        jaison?.saveInBackground()
-        
-        self.tableView.reloadData()
-    }
+//    func createObject() {
+//        
+//        let apartment = Room()
+//        
+//        apartment.roomName = "imagination"
+//        
+//        
+//        apartment.saveInBackground()
+//        
+//        
+//        let paul = Person(name: "Paul", email: "paul@gmail.com", password: "password", roomName: apartment.objectId!)
+//        let jaison = Person(name: "Jaison", email: "jai@gmail.com", password:"password", roomName: apartment.objectId!)
+//        
+//        apartment.members = [paul!,jaison!]
+//        
+//        apartment.saveInBackground()
+//        paul?.saveInBackground()
+//        jaison?.saveInBackground()
+//        
+//        self.tableView.reloadData()
+//    }
     
   
     
